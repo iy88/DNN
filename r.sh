@@ -1,0 +1,1 @@
+g++ -Wall -g -o ./out/test ./test.cc && time ./out/test
