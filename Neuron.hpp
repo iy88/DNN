@@ -24,8 +24,8 @@ class Neuron : public ComputeNode {
 void Neuron::bp() {
   if (fp != nullptr) fp->bp(grad);
   /*
-   * Neuron's grad is a temp var. depend on each input, accumulate the grad in the
-   * detailed function instead
+   * Neuron's grad is a temp var. depend on each input, accumulate the grad in
+   * the detailed function instead
    */
   grad = 0;
 }

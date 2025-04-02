@@ -1,27 +1,5 @@
 {
   "files.associations": {
-    "vector": "cpp",
-    "ostream": "cpp",
-    "array": "cpp",
-    "deque": "cpp",
-    "forward_list": "cpp",
-    "list": "cpp",
-    "string": "cpp",
-    "unordered_map": "cpp",
-    "unordered_set": "cpp",
-    "string_view": "cpp",
-    "initializer_list": "cpp",
-    "ranges": "cpp",
-    "span": "cpp",
-    "regex": "cpp",
-    "valarray": "cpp",
-    "chrono": "cpp",
-    "format": "cpp",
-    "generator": "cpp",
-    "stacktrace": "cpp",
-    "text_encoding": "cpp",
-    "bitset": "cpp",
-    "utility": "cpp",
-    "iomanip": "cpp"
+    "ostream": "cpp"
   }
 }

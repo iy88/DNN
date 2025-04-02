@@ -1,9 +1,9 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+
 #include "DNN.hpp"
 
 int main() {
   cout << fixed << setprecision(4);
-  // srand(time(nullptr));
   DNN net;
   // net.manual_seed(42);
   net.addLayer(2);

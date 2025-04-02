@@ -3,7 +3,7 @@
 #include "common.h"
 class Function {
  public:
-  virtual bool isWeighted(){return false;}
+  virtual bool isWeighted() { return false; }
   virtual ld exec(vector<ld> &inputs) = 0;
   virtual vector<ld> grad(vector<ld> &inputs) = 0;
   virtual ~Function() = default;

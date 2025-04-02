@@ -89,8 +89,9 @@ vector<ld> ComputationalGraph::compute() {
     if (inNodes.size() == 0) {
       for (auto nd : Nodes)
         if (indegree[nd] == 0) inNodes.push_back(nd);
-      sort(inNodes.begin(), inNodes.end(),
-           [&](auto a, auto b) { return a->id < b->id; });  // ensure ascending by id
+      sort(inNodes.begin(), inNodes.end(), [&](auto a, auto b) {
+        return a->id < b->id;
+      });  // ensure ascending by id
     }
     for (auto nd : inNodes) q.push(nd);
     while (!q.empty()) {
