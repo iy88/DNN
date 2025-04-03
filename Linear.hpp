@@ -20,7 +20,7 @@ class Linear : public Function {
       ld rand_num = (ld)rand() / RAND_MAX * 2 * bound_weight - bound_weight;
       it = rand_num;
     }
-    // // W[W.size() - 1] = 0.0;  // zero for bias
+    // W[W.size() - 1] = 0.0;  // zero for bias
   }
   ld exec(vector<ld> &inputs) {
     _inputs = inputs;
