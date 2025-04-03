@@ -8,13 +8,12 @@ int main() {
   // net.manual_seed(42);
   net.addLayer(2);
   net.addLayer(2);
-  net.addLayer<Sigmoid>();
+  net.addLayer<Sgn>();
   net.addLayer(1);
-  // net.addLayer<Sigmoid>();
-  net.addLayer<LeakyReLU>();
+  net.addLayer<Sgn>();
 
-  vector<vector<ld>> inputs = {{1, 1}, {0, 0}, {0, 1}, {1, 0}};
-  vector<vector<ld>> labels = {{0}, {0}, {1}, {1}};
+  vector<vector<ld>> inputs = {{1, 1}, {-1, -1}, {-1, 1}, {1, -1}};
+  vector<vector<ld>> labels = {{-1}, {-1}, {1}, {1}};
   cout << "[before training] --------------------" << endl;
   for (size_t i = 0; i < inputs.size(); i++) {
     vector<ld> res = net.eval(inputs[i]);
