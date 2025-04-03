@@ -16,19 +16,15 @@ class Sigmoid : public Activation {
   Sigmoid() = default;
   ld exec(vector<ld> &inputs) { return 1.0 / (1 + exp(-inputs[0])); }
   vector<ld> grad(vector<ld> &inputs) {
-    return {exec(inputs) * (1 - exec(inputs))};
+    return {Sigmoid::exec(inputs) * (1 - Sigmoid::exec(inputs))};
   }
-  Sigmoid *newInstance() { return new Sigmoid; }
 };
 
-class Sgn : public Activation {
+class Sgn : public Sigmoid {
  public:
   Sgn() = default;
-  ld exec(vector<ld> &inputs) { return 2.0 / (1 + exp(-inputs[0])) - 1; }
-  vector<ld> grad(vector<ld> &inputs) {
-    return {2 * exp(-inputs[0]) /
-            (2 * exp(-inputs[0]) + (exp(-inputs[0]) * exp(-inputs[0])) + 1)};
-  }
+  ld exec(vector<ld> &inputs) { return 2 * Sigmoid::exec(inputs) - 1; }
+  vector<ld> grad(vector<ld> &inputs) { return {2 * Sigmoid::grad(inputs)[0]}; }
 };
 
 class LeakyReLU : public Activation {
