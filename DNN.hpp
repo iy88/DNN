@@ -110,11 +110,12 @@ void DNN::training(ld lr, size_t epoch, vector<vector<ld>> &inputs,
                    vector<vector<ld>> &labels) {
   for (size_t i = 0; i < epoch; i++) {
     clearGrad();
-    vector<ld> grad(outNodes.size(), 0);
     for (size_t t = 0; t < inputs.size(); t++) {
+      // clearGrad();
       vector<ld> res = eval(inputs[t]);
-      vector<ld> grad(MSELoss(labels[t], res, inputs.size()));
-      bp(grad);
+      vector<ld> lossGrad(MSELoss(labels[t], res, inputs.size()));
+      bp(lossGrad);
+      // step(lr);
     }
     step(lr);
   }
