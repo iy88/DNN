@@ -95,13 +95,17 @@ vector<ld> DNN::eval(vector<ld> &inputs) {
   for (size_t i = 0; i < inputs.size(); i++) {
     Layers[0][i]->input(inputs[i]);
   }
+  // cout << "Forward::" << endl;  // use to print forward output of each node
   return compute();
 }
 
 vector<ld> DNN::MSELoss(vector<ld> labels, vector<ld> outputs, size_t n) {
   vector<ld> grad(outputs.size(), 0);
   for (size_t j = 0; j < labels.size(); j++) {
+    // 1/n Σ(y_pd-y_tg)^2  --- standard MSE
     grad[j] = 2 * (outputs[j] - labels[j]) / n;
+    // 1/2n Σ(y_tg-y_pd)^2  --- use extra 1/2 eliminate the "2" factor
+    // grad[j] = -(labels[j] - outputs[j]) / n;
   }
   return grad;
 }

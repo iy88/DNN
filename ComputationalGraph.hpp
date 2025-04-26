@@ -114,6 +114,8 @@ vector<ld> ComputationalGraph::compute() {
     reverse(topo_backward.begin(), topo_backward.end());
   }
   for (auto nd : topo_forward) {
+    // use to print forward output of each node
+    // cout << nd->id << " " << nd->compute() << endl;
     nd->compute();
   }
   vector<ld> res;
@@ -124,11 +126,15 @@ vector<ld> ComputationalGraph::compute() {
 }
 
 void ComputationalGraph::grad(vector<ld> &outputGrad) {
+  // cout << "Backward::" << endl; // use to print backward grad of each node
   for (size_t i = 0; i < outNodes.size(); ++i)
     outNodes[i]->grad = outputGrad[i];
-  for (auto nd : topo_backward)
+  for (auto nd : topo_backward) {
     for (size_t i = 0; i < nd->inputLength; ++i)
       nd->operands[i]->grad += nd->grad * nd->pfpx[i];
+    // use to print backward grad of each node
+    // cout << nd->id << " " << nd->grad << endl;
+  }
 }
 
 vector<ld> ComputationalGraph::grad() {
